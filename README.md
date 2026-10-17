@@ -29,8 +29,9 @@
 
 | 平台 | 文件 | 说明 |
 | ---- | ---- | ---- |
-| Windows | `四象限便签-1.0.0.exe` | 便携版（portable），双击即用，免安装 |
-| macOS | `四象限便签-1.0.0.dmg` | 拖入 Applications 即可 |
+| Windows | `Quadrant-Notes-1.0.0-x64.exe` | 便携版（portable），双击即用，免安装 |
+| macOS（Apple Silicon） | `Quadrant-Notes-1.0.0-arm64.dmg` | 拖入 Applications 即可 |
+| macOS（Intel） | `Quadrant-Notes-1.0.0-x64.dmg` | 拖入 Applications 即可 |
 
 > macOS 首次打开如提示「无法确认开发者」，请在「系统设置 → 隐私与安全性」中允许打开。
 

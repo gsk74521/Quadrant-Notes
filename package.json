@@ -31,12 +31,27 @@
     "directories": {
       "output": "dist"
     },
-    "artifactName": "${productName}-${version}.${ext}",
+    "artifactName": "Quadrant-Notes-${version}-${arch}.${ext}",
     "win": {
-      "target": "portable"
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
     },
     "mac": {
-      "target": "dmg",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
       "category": "public.app-category.productivity"
     }
   }
