@@ -1,0 +1,43 @@
+{
+  "name": "quadrant-notes",
+  "productName": "四象限便签",
+  "version": "1.0.0",
+  "description": "四象限时间管理便签 · 跨平台桌面应用",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win portable",
+    "dist:mac": "electron-builder --mac"
+  },
+  "author": "FQTM",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gsk74521/Quadrant-Notes.git"
+  },
+  "homepage": "https://github.com/gsk74521/Quadrant-Notes",
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.fqtm.quadrantnotes",
+    "productName": "四象限便签",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "artifactName": "${productName}-${version}.${ext}",
+    "win": {
+      "target": "portable"
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.productivity"
+    }
+  }
+}

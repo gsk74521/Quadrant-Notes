@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>四象限时间管理</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" id="logoMark">四</div>
+      <div class="brand__text">
+        <h1 id="appTitle">四象限时间管理</h1>
+        <p id="today" class="subtitle"></p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span id="hint" class="hint"></span>
+      <label class="startup" id="startupWrap" title="登录后自动启动本应用">
+        <input type="checkbox" id="startupToggle">
+        <span class="switch"></span>
+        <span id="startupLabel">开机自启</span>
+      </label>
+      <button id="langBtn" class="btn ghost" title="Switch language">EN</button>
+      <button id="globalAdd" class="btn primary">＋ 新建便签</button>
+    </div>
+  </header>
+
+  <main class="board">
+    <section class="quadrant" data-quadrant="ui" style="--accent:#e65a4c">
+      <header class="quadrant__head">
+        <span class="quadrant__dot"></span>
+        <div class="quadrant__meta">
+          <h2>重要且紧急</h2>
+          <span class="quadrant__tag">马上去做</span>
+        </div>
+        <span class="quadrant__count" title="待完成">0</span>
+        <button class="quadrant__add" aria-label="添加便签">＋</button>
+      </header>
+      <div class="notes"></div>
+    </section>
+
+    <section class="quadrant" data-quadrant="iu" style="--accent:#3d7fd6">
+      <header class="quadrant__head">
+        <span class="quadrant__dot"></span>
+        <div class="quadrant__meta">
+          <h2>重要不紧急</h2>
+          <span class="quadrant__tag">计划去做</span>
+        </div>
+        <span class="quadrant__count" title="待完成">0</span>
+        <button class="quadrant__add" aria-label="添加便签">＋</button>
+      </header>
+      <div class="notes"></div>
+    </section>
+
+    <section class="quadrant" data-quadrant="un" style="--accent:#e0a01f">
+      <header class="quadrant__head">
+        <span class="quadrant__dot"></span>
+        <div class="quadrant__meta">
+          <h2>紧急不重要</h2>
+          <span class="quadrant__tag">委托他人</span>
+        </div>
+        <span class="quadrant__count" title="待完成">0</span>
+        <button class="quadrant__add" aria-label="添加便签">＋</button>
+      </header>
+      <div class="notes"></div>
+    </section>
+
+    <section class="quadrant" data-quadrant="nn" style="--accent:#3a9d68">
+      <header class="quadrant__head">
+        <span class="quadrant__dot"></span>
+        <div class="quadrant__meta">
+          <h2>不紧急不重要</h2>
+          <span class="quadrant__tag">尽量不做</span>
+        </div>
+        <span class="quadrant__count" title="待完成">0</span>
+        <button class="quadrant__add" aria-label="添加便签">＋</button>
+      </header>
+      <div class="notes"></div>
+    </section>
+  </main>
+
+  <div class="backdrop" id="backdrop" hidden>
+    <form class="modal" id="modal">
+      <h3 id="modalTitle">新建便签</h3>
+      <div class="field">
+        <label id="labelText" for="mText">要做的事</label>
+        <input type="text" id="mText" placeholder="例如：回复客户紧急邮件" autocomplete="off" required>
+      </div>
+      <div class="field">
+        <label id="labelTime" for="mTime">时间（可选）</label>
+        <input type="datetime-local" id="mTime">
+      </div>
+      <div class="field">
+        <label id="labelWhich">放在哪个象限</label>
+        <div class="qpick" id="mQuads"></div>
+      </div>
+      <div class="modal__actions">
+        <button type="button" class="btn ghost" id="mCancel">取消</button>
+        <button type="submit" class="btn primary" id="mAdd">添加</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
