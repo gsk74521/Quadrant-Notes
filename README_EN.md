@@ -29,9 +29,9 @@ Grab the latest build from the [Releases](https://github.com/gsk74521/Quadrant-N
 
 | Platform | File | Notes |
 | -------- | ---- | ----- |
-| Windows | `Quadrant-Notes-1.0.0-x64.exe` | Portable — double-click to run, no installation |
-| macOS (Apple Silicon) | `Quadrant-Notes-1.0.0-arm64.dmg` | Drag into Applications |
-| macOS (Intel) | `Quadrant-Notes-1.0.0-x64.dmg` | Drag into Applications |
+| Windows | `Quadrant-Notes-1.1.0-x64.exe` | Portable — double-click to run, no installation |
+| macOS (Apple Silicon) | `Quadrant-Notes-1.1.0-arm64.dmg` | Drag into Applications |
+| macOS (Intel) | `Quadrant-Notes-1.1.0-x64.dmg` | Drag into Applications |
 
 > On macOS, if you see "cannot be opened because the developer cannot be verified", allow it under System Settings → Privacy & Security.
 

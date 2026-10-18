@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 const path = require("path");
+const { getStartupEnabled, setStartupEnabled } = require("./startup");
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -20,29 +21,11 @@ function createWindow() {
   win.loadFile(path.join(__dirname, "renderer", "index.html"));
 }
 
-function loginItemOptions() {
-  return app.isPackaged
-    ? {}
-    : { path: process.execPath, args: [app.getAppPath()] };
-}
+ipcMain.handle("startup:get", () => getStartupEnabled());
 
-ipcMain.handle("startup:get", () => {
-  try {
-    return app.getLoginItemSettings(loginItemOptions()).openAtLogin;
-  } catch (e) {
-    return false;
-  }
-});
-
-ipcMain.handle("startup:set", (_event, value) => {
-  try {
-    const settings = loginItemOptions();
-    settings.openAtLogin = !!value;
-    app.setLoginItemSettings(settings);
-    return app.getLoginItemSettings(loginItemOptions()).openAtLogin;
-  } catch (e) {
-    return false;
-  }
+ipcMain.handle("startup:set", async (_event, value) => {
+  await setStartupEnabled(!!value);
+  return getStartupEnabled();
 });
 
 app.whenReady().then(() => {
