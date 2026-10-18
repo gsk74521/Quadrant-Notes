@@ -19,7 +19,6 @@ English · [简体中文](README.md)
 - **Mark as done**: completed notes fade out with a strikethrough and move to the end of the quadrant; a live to-do counter sits in each quadrant header
 - **Free resizing**: drag the folded corner at the bottom-right of a note to resize it
 - **Bilingual UI**: switch between Chinese and English with one click; your choice is remembered
-- **Launch at login**: optional auto-start on login
 - **Local data storage**: data is stored on your machine, works offline, and survives restarts; sample notes included on first launch
 - **Zero-dependency runtime**: the packaged app is a single portable file — no installation, no network required
 
@@ -62,15 +61,14 @@ See [TEST.md](TEST.md) for the manual test checklist, covering 9 groups: launch,
 
 ## Tech stack
 
-- [Electron](https://www.electronjs.org/) 33 (main process + preload script, contextIsolation enabled)
+- [Electron](https://www.electronjs.org/) 33 (main process + renderer, contextIsolation enabled)
 - Plain HTML / CSS / JavaScript in the renderer — no frontend framework
 - Data storage: localStorage
 
 ## Project layout
 
 ```
-├── main.js           # Electron main process (window, menu, launch-at-login)
-├── preload.js        # Preload script (contextBridge exposes startupAPI)
+├── main.js           # Electron main process (window, menu)
 ├── renderer/         # Renderer (index.html / app.js / styles.css)
 ├── build/            # App icons and style drafts
 ├── docs/             # Documentation images

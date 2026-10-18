@@ -19,7 +19,6 @@
 - **完成打勾**：完成的任务变淡划线、自动排到象限末尾，象限右上角实时显示待办数量
 - **自由缩放**：拖动便签右下角折角即可调整便签大小
 - **中英双语**：界面一键切换中 / 英文，选择会被记住
-- **开机自启**：可选择在登录后自动启动应用
 - **数据本地保存**：数据保存在本机，离线可用，关闭重开不丢失；首次打开自带示例便签
 - **零依赖运行时**：打包后为单文件便携应用，无需安装、无需联网
 
@@ -62,15 +61,14 @@ npm run dist:mac
 
 ## 技术栈
 
-- [Electron](https://www.electronjs.org/) 33（主进程 + 预加载脚本，contextIsolation 开启）
+- [Electron](https://www.electronjs.org/) 33（主进程 + 渲染进程，contextIsolation 开启）
 - 渲染层为原生 HTML / CSS / JavaScript，无前端框架
 - 数据存储：localStorage
 
 ## 目录结构
 
 ```
-├── main.js           # Electron 主进程（窗口、菜单、开机自启）
-├── preload.js        # 预加载脚本（contextBridge 暴露 startupAPI）
+├── main.js           # Electron 主进程（窗口、菜单）
 ├── renderer/         # 渲染层（index.html / app.js / styles.css）
 ├── build/            # 应用图标与风格稿
 ├── docs/             # 文档图片

@@ -1,9 +1,14 @@
-const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
+const fs = require("fs");
 const path = require("path");
-const { getStartupEnabled, setStartupEnabled } = require("./startup");
 
 function createWindow() {
-  const win = new BrowserWindow({
+  const iconPath = path.join(
+    __dirname,
+    "build",
+    process.platform === "win32" ? "icon.ico" : "icon.png"
+  );
+  const windowOptions = {
     width: 1320,
     height: 860,
     minWidth: 920,
@@ -12,21 +17,22 @@ function createWindow() {
     backgroundColor: "#f3ead7",
     autoHideMenuBar: true,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
       nodeIntegration: false
     }
-  });
+  };
+
+  if (!app.isPackaged && fs.existsSync(iconPath)) {
+    windowOptions.icon = iconPath;
+    if (process.platform === "darwin" && app.dock) {
+      app.dock.setIcon(iconPath);
+    }
+  }
+
+  const win = new BrowserWindow(windowOptions);
 
   win.loadFile(path.join(__dirname, "renderer", "index.html"));
 }
-
-ipcMain.handle("startup:get", () => getStartupEnabled());
-
-ipcMain.handle("startup:set", async (_event, value) => {
-  await setStartupEnabled(!!value);
-  return getStartupEnabled();
-});
 
 app.whenReady().then(() => {
   if (process.platform === "darwin") {

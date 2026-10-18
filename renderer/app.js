@@ -18,8 +18,6 @@ const I18N = {
     resize: "拖动右下角调节大小",
     toDo: "待完成",
     todoLabel: "待办",
-    startup: "开机自启",
-    startupTip: "登录后自动启动本应用",
     addHere: "添加便签",
     today: "今天",
     tomorrow: "明天",
@@ -50,8 +48,6 @@ const I18N = {
     resize: "Drag the corner to resize",
     toDo: "To-do",
     todoLabel: "To-do",
-    startup: "Start at login",
-    startupTip: "Launch this app automatically at login",
     addHere: "Add note",
     today: "Today",
     tomorrow: "Tomorrow",
@@ -304,8 +300,6 @@ function applyI18n() {
   $("hint").textContent = L.hint;
   $("langBtn").textContent = lang === "zh" ? "EN" : "中文";
   $("globalAdd").textContent = L.newNote;
-  $("startupLabel").textContent = L.startup;
-  $("startupWrap").setAttribute("title", L.startupTip);
   $("today").textContent = fmtHeaderDate();
 
   document.querySelectorAll(".quadrant").forEach(function (q) {
@@ -388,23 +382,6 @@ $("langBtn").addEventListener("click", function () {
   applyI18n();
   renderAll();
 });
-
-const startupToggle = $("startupToggle");
-if (window.startupAPI) {
-  window.startupAPI.get().then(function (v) {
-    startupToggle.checked = !!v;
-  }).catch(function () {});
-  startupToggle.addEventListener("change", function () {
-    const desired = startupToggle.checked;
-    window.startupAPI.set(desired).then(function (ok) {
-      startupToggle.checked = !!ok;
-    }).catch(function () {
-      startupToggle.checked = !desired;
-    });
-  });
-} else {
-  $("startupWrap").style.display = "none";
-}
 
 applyI18n();
 renderAll();
